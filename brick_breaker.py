@@ -23,3 +23,7 @@ cores = {
 fonte_do_titulo = pygame.font.SysFont("impact", 64)
 fonte_do_botao = pygame.font.SysFont("arial", 32)
 
+tamanho_do_botao = (200, 60)
+x_botao = (800) // 2 - (200) // 2
+y_botao = 350
+botao_jogar = pygame.Rect(x_botao, y_botao, (200), (60))
