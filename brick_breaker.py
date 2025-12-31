@@ -20,8 +20,8 @@ cores = {
 }
 
 
-fonte_do_titulo = pygame.font.SysFont("impact", 64)
-fonte_do_botao = pygame.font.SysFont("arial bold", 32)
+fonte_do_titulo = pygame.font.SysFont("impact", 68)
+fonte_do_botao = pygame.font.SysFont("arial bold", 36)
 
 tamanho_do_botao = (200, 60)
 x_botao = (800) // 2 - (200) // 2
