@@ -28,7 +28,7 @@ x_botao = (800) // 2 - (200) // 2
 y_botao = 350
 botao_jogar = pygame.Rect(x_botao, y_botao, (200), (60))
 
-def tela_inical():
+def tela_de_abertura():
     while True:
         tela.fill(cores["roxo claro"])
 
@@ -37,3 +37,31 @@ def tela_inical():
 
         posicao_do_mouse = pygame.mouse.get_pos()
         mouse_clicado = pygame.mouse.get_pressed()
+
+        if botao_jogar.collidepoint(posicao_do_mouse):
+            pygame.draw.rect(tela, (230, 230, 230), botao_jogar)
+            if mouse_clicado[0]:
+                return
+        else:
+            pygame.draw.rect(tela, cores["branco"], botao_jogar)
+
+        texto_botao = fonte_do_botao.render("JOGAR", True, cores["roxo"])
+        tela.blit(
+            texto_botao,
+            (
+                botao_jogar.x + (200) // 2 - texto_botao.get_width() // 2,
+                botao_jogar.y + (60) // 2 - texto_botao.get_height() // 2
+            )
+        )
+
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        
+        pygame.display.flip()
+        relogio.tick(60)
+
+tela_de_abertura()
+pygame.quit()
