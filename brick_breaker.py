@@ -63,10 +63,17 @@ def tela_de_abertura():
         pygame.display.flip()
         relogio.tick(60)
 
-tela_de_abertura()
+def tela_de_jogo(): 
+    while True:
+        tela.fill(cores["branco"])
+        
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-def tela_de_jogo():
-    while true:
-        tamanho_tela_de_jogo = (800, 800)
-        tela = pygame.display.set_mode(tamanho_tela_de_jogo)
+        pygame.display.flip()
+        relogio.tick(60)
+tela_de_abertura()       
+tela_de_jogo()    
 pygame.quit()
