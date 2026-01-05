@@ -64,4 +64,9 @@ def tela_de_abertura():
         relogio.tick(60)
 
 tela_de_abertura()
+
+def tela_de_jogo():
+    while true:
+        tamanho_tela_de_jogo = (800, 800)
+        tela = pygame.display.set_mode(tamanho_tela_de_jogo)
 pygame.quit()
