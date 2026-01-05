@@ -39,7 +39,7 @@ def tela_de_abertura():
         mouse_clicado = pygame.mouse.get_pressed()
 
         if botao_jogar.collidepoint(posicao_do_mouse):
-            pygame.draw.rect(tela, (230, 230, 230), botao_jogar)
+            pygame.draw.rect(tela, cores["lílas"], botao_jogar)
             if mouse_clicado[0]:
                 return
         else:
