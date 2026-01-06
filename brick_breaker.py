@@ -63,8 +63,24 @@ def tela_de_abertura():
         pygame.display.flip()
         relogio.tick(60)
 
+tamanho_bola = 15
+bola = pygame.Rect(100, 375, tamanho_bola, tamanho_bola)
+tamanho_jogador = 100
+jogador = pygame.Rect(0, 550, tamanho_jogador, 15)
+
+qtde_blocos_linhas = 8
+qtde_linhas_blocos = 5
+qtde_total_de_blocos = qtde_blocos_linhas * qtde_linhas_blocos
+def criar_blocos_(qtde_blocos_linha, qtde_linhas_blocos):
+    blocos = []
+    return blocos
+
+fim_jogo = False 
+pontuação = 0
+velocidade_bola = [1, 1]
+
+
 def tela_de_jogo(): 
-    while True:
         tela.fill(cores["branco"])
         
         for evento in pygame.event.get():
@@ -76,12 +92,3 @@ def tela_de_jogo():
         relogio.tick(60)
 tela_de_abertura()       
 tela_de_jogo()
-tamanho_bola = 15
-bola = pygame.Rect(100, 375, tamanho_bola, tamanho_bola)
-tamanho_jogador = 100
-jogador = pygame.Rect(0, 550, tamanho_jogador, 15)
-
-qtde_blocos_linhas = 8
-qtde_linhas_blocos = 5
-qtde_total_de_blocos = qtde_blocos_linhas * qtde_linhas_blocos
-pygame.quit()
