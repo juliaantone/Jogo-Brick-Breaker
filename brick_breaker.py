@@ -75,5 +75,11 @@ def tela_de_jogo():
         pygame.display.flip()
         relogio.tick(60)
 tela_de_abertura()       
-tela_de_jogo()    
+tela_de_jogo()
+tamanho_bola = 15
+jogador = 100
+
+qtde_blocos_linhas = 8
+qtde_linhas_blocos = 5
+qtde_total_de_blocos = qtde_blocos_linhas * qtde_linhas_blocos
 pygame.quit()
