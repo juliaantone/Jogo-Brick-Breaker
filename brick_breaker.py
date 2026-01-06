@@ -62,6 +62,7 @@ def tela_de_abertura():
         
         pygame.display.flip()
         relogio.tick(60)
+tela_de_abertura()
 
 tamanho_bola = 15
 bola = pygame.Rect(100, 375, tamanho_bola, tamanho_bola)
@@ -75,20 +76,22 @@ def criar_blocos_(qtde_blocos_linha, qtde_linhas_blocos):
     blocos = []
     return blocos
 
-fim_jogo = False 
 pontuação = 0
 velocidade_bola = [1, 1]
 
 
 def tela_de_jogo(): 
-        tela.fill(cores["branco"])
-        
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+        fim_jogo = False 
 
-        pygame.display.flip()
-        relogio.tick(60)
-tela_de_abertura()       
+        while not fim_jogo:
+            tela.fill(cores["branco"])
+
+            for evento in pygame.event.get():
+             if evento.type == pygame.QUIT:
+                fim_jogo = True
+
+            pygame.display.flip()
+            relogio.tick(60)
 tela_de_jogo()
+pygame.quit()
+sys.exit()
