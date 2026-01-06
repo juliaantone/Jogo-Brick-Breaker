@@ -22,6 +22,7 @@ cores = {
 
 fonte_do_titulo = pygame.font.SysFont("impact", 68)
 fonte_do_botao = pygame.font.SysFont("arial bold", 36)
+fonte_vidas_nivel = pygame.font.SysFont("arial", 26)
 
 tamanho_do_botao = (200, 60)
 x_botao = (800) // 2 - (200) // 2
@@ -62,6 +63,7 @@ def tela_de_abertura():
         
         pygame.display.flip()
         relogio.tick(60)
+
 tela_de_abertura()
 
 tamanho_bola = 15
