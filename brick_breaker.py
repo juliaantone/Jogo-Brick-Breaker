@@ -24,6 +24,15 @@ fonte_do_titulo = pygame.font.SysFont("impact", 68)
 fonte_do_botao = pygame.font.SysFont("arial bold", 36)
 fonte_vidas_nivel = pygame.font.SysFont("arial", 26)
 
+vidas = 5
+nivel = 1
+pontuacao = 0
+
+tamanho_da_bola = 15
+velocidade_padrao = [5, -5]
+barra_largura_padrao = 100
+
+
 tamanho_do_botao = (200, 60)
 x_botao = (800) // 2 - (200) // 2
 y_botao = 350
