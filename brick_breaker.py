@@ -77,7 +77,9 @@ def tela_de_jogo():
 tela_de_abertura()       
 tela_de_jogo()
 tamanho_bola = 15
-jogador = 100
+bola = pygame.Rect(100, 375, tamanho_bola, tamanho_bola)
+tamanho_jogador = 100
+jogador = pygame.Rect(0, 550, tamanho_jogador, 15)
 
 qtde_blocos_linhas = 8
 qtde_linhas_blocos = 5
