@@ -101,20 +101,13 @@ tela_de_abertura()
 
 
 def movimentar_barra():
-    velocidade = 10
-    teclas = pygame.key.get_pressed()
-
-    if teclas[pygame.K_RIGHT]:
-        barra.x += velocidade
-    if teclas[pygame.K_LEFT]:
-        barra.x -= velocidade
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+    barra.centerx = mouse_x
     
     if barra.left < 0:
         barra.left = 0
     if barra.right > 800:
         barra.right = 800
-
-
 
     for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
