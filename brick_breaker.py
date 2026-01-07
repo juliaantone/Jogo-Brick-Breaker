@@ -114,5 +114,39 @@ def tela_de_jogo():
             pygame.display.flip()
             relogio.tick(60)
 tela_de_jogo()
+
+def movimentar_barra(evento):
+    if evento.type == pygame.KEYDOWN:
+        if evento.key == pygame.K_RIGHT:
+
+        if evento.key == pygame.K_LEFT:
+    
+
+
+
+
+    for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+                pygame.display.flip()
+            relogio.tick(60)
+movimentar_barra()
+
+def movimentar_bola():
+    pass
+
+
+
+
+    for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+                pygame.display.flip()
+            relogio.tick(60)
+movimentar_bola()
 pygame.quit()
 sys.exit()
