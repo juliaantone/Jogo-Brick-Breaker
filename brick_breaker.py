@@ -101,7 +101,7 @@ tela_de_abertura()
 
 
 def movimentar_barra():
-    velocidade = 8
+    velocidade = 10
     teclas = pygame.key.get_pressed()
 
     if teclas[pygame.K_RIGHT]:
