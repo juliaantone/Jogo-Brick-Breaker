@@ -29,8 +29,10 @@ nivel = 1
 pontuacao = 0
 
 tamanho_da_bola = 15
+bola = pygame.Rect(100,375, tamanho_da_bola, tamanho_da_bola)
 velocidade_padrao = [5, -5]
 barra_largura_padrao = 100
+barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
 
 def criar_blocos(nivel): #amg eu termino essa função amanha
@@ -94,28 +96,13 @@ def tela_de_abertura():
 
 tela_de_abertura()
 
-tamanho_bola = 15
-bola = pygame.Rect(100, 375, tamanho_bola, tamanho_bola)
-tamanho_jogador = 100
-jogador = pygame.Rect(0, 550, tamanho_jogador, 15)
-
-qtde_blocos_linhas = 8
-qtde_linhas_blocos = 5
-qtde_total_de_blocos = qtde_blocos_linhas * qtde_linhas_blocos
-def criar_blocos_(qtde_blocos_linha, qtde_linhas_blocos):
-    blocos = []
-    return blocos
-
-pontuação = 0
-velocidade_bola = [1, 1]
-
 
 def tela_de_jogo(): 
         fim_jogo = False 
 
         while not fim_jogo:
             tela.fill(cores["branco"])
-
+            pygame.draw.rect(tela, cores["lílas"], barra)
             for evento in pygame.event.get():
              if evento.type == pygame.QUIT:
                 fim_jogo = True
