@@ -33,7 +33,7 @@ velocidade_padrao = [5, -5]
 barra_largura_padrao = 100
 
 
-def criar_blocos(nivel): #amg eu termino essa função
+def criar_blocos(nivel): #amg eu termino essa função amanha
     blocos = []
 
     tamanho_do_bloco = (85, 25)
