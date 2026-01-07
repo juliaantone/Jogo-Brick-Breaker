@@ -33,6 +33,25 @@ velocidade_padrao = [5, -5]
 barra_largura_padrao = 100
 
 
+def criar_blocos(nivel): #amg eu termino essa função
+    blocos = []
+
+    tamanho_do_bloco = (85, 25)
+    espaco_x = 10
+    espaco_y = 10 
+
+    largura_da_tela = tamanho_da_tela[0]
+    largura_total_da_tela = (8 * (85)) + (7 * espaco_x)
+    x_inicial = (largura_da_tela - largura_total_da_tela) // 2
+
+
+
+
+
+
+
+
+
 tamanho_do_botao = (200, 60)
 x_botao = (800) // 2 - (200) // 2
 y_botao = 350
