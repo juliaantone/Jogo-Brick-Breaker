@@ -101,7 +101,7 @@ tela_de_abertura()
 
 
 def movimentar_barra():
-    velocidade = 10
+    velocidade=9
     teclas = pygame.key.get_pressed()
 
     if teclas[pygame.K_RIGHT]:
@@ -145,6 +145,9 @@ def tela_de_jogo():
 
         while not fim_jogo:
             tela.fill(cores["branco"])
+
+            movimentar_barra()
+
             pygame.draw.rect(tela, cores["lílas"], barra)
             pygame.draw.rect(tela, cores["roxo escuro"], bola)
 
@@ -153,7 +156,6 @@ def tela_de_jogo():
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     fim_jogo = True
-                movimentar_barra()
             pygame.display.flip()
             relogio.tick(60)
 tela_de_jogo()
