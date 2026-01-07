@@ -104,6 +104,11 @@ def tela_de_jogo():
             tela.fill(cores["branco"])
             pygame.draw.rect(tela, cores["lílas"], barra)
             pygame.draw.rect(tela, cores["roxo escuro"], bola)
+
+
+def desenhar_blocos(blocos):
+    for bloco in blocos:
+            pygame.draw.rect(tela, cores["roxo escuro"], bloco)
             for evento in pygame.event.get():
              if evento.type == pygame.QUIT:
                 fim_jogo = True
@@ -111,5 +116,7 @@ def tela_de_jogo():
             pygame.display.flip()
             relogio.tick(60)
 tela_de_jogo()
+blocos = criar_blocos
+desenhar_blocos(blocos)
 pygame.quit()
 sys.exit()
