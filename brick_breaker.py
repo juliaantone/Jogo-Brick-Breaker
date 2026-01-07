@@ -97,23 +97,7 @@ def tela_de_abertura():
 tela_de_abertura()
 
 
-def tela_de_jogo(): 
-        fim_jogo = False 
 
-        while not fim_jogo:
-            tela.fill(cores["branco"])
-            pygame.draw.rect(tela, cores["lílas"], barra)
-            pygame.draw.rect(tela, cores["roxo escuro"], bola)
-
-
-
-            for evento in pygame.event.get():
-             if evento.type == pygame.QUIT:
-                fim_jogo = True
-
-            pygame.display.flip()
-            relogio.tick(60)
-tela_de_jogo()
 
 def movimentar_barra(evento):
     if evento.type == pygame.KEYDOWN:
@@ -133,7 +117,7 @@ def movimentar_barra(evento):
 
                 pygame.display.flip()
             relogio.tick(60)
-movimentar_barra()
+
 
 def movimentar_bola():
     pass
@@ -148,6 +132,24 @@ def movimentar_bola():
 
                 pygame.display.flip()
             relogio.tick(60)
-movimentar_bola()
+
+
+def tela_de_jogo(): 
+        fim_jogo = False 
+
+        while not fim_jogo:
+            tela.fill(cores["branco"])
+            pygame.draw.rect(tela, cores["lílas"], barra)
+            pygame.draw.rect(tela, cores["roxo escuro"], bola)
+
+
+
+            for evento in pygame.event.get():
+                if evento.type == pygame.QUIT:
+                    fim_jogo = True
+                movimentar_barra(evento)
+            pygame.display.flip()
+            relogio.tick(60)
+tela_de_jogo()
 pygame.quit()
 sys.exit()
