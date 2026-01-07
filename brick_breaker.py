@@ -118,8 +118,9 @@ tela_de_jogo()
 def movimentar_barra(evento):
     if evento.type == pygame.KEYDOWN:
         if evento.key == pygame.K_RIGHT:
-
+            barra.x = barra.x + 5
         if evento.key == pygame.K_LEFT:
+            barra.x = barra.x - 5
     
 
 
