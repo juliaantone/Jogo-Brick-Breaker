@@ -36,7 +36,7 @@ barra_largura_padrao = 100
 barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
 
-def criar_blocos(nivel): 
+def criar_blocos(nivel): #amg eu termino essa função amanha
     blocos = []
 
     tamanho_do_bloco = (85, 25)
@@ -101,13 +101,20 @@ tela_de_abertura()
 
 
 def movimentar_barra():
-    mouse_x, mouse_y = pygame.mouse.get_pos()
-    barra.centerx = mouse_x
+    velocidade = 10
+    teclas = pygame.key.get_pressed()
 
+    if teclas[pygame.K_RIGHT]:
+        barra.x += velocidade
+    if teclas[pygame.K_LEFT]:
+        barra.x -= velocidade
+    
     if barra.left < 0:
-         barra.left = 0
+        barra.left = 0
     if barra.right > 800:
-         barra.right = 800
+        barra.right = 800
+
+
 
     for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
