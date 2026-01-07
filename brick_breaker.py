@@ -103,6 +103,7 @@ def tela_de_jogo():
         while not fim_jogo:
             tela.fill(cores["branco"])
             pygame.draw.rect(tela, cores["lílas"], barra)
+            pygame.draw.rect(tela, cores["roxo escuro"], bola)
             for evento in pygame.event.get():
              if evento.type == pygame.QUIT:
                 fim_jogo = True
