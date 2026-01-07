@@ -99,14 +99,19 @@ tela_de_abertura()
 
 
 
-def movimentar_barra(evento):
-    if evento.type == pygame.KEYDOWN:
-        if evento.key == pygame.K_RIGHT:
-            barra.x = barra.x + 5
-        if evento.key == pygame.K_LEFT:
-            barra.x = barra.x - 5
-    
+def movimentar_barra():
+    velocidade = 8
+    teclas = pygame.key.get_pressed()
 
+    if teclas[pygame.K_RIGHT]:
+        barra.x += velocidade
+    if teclas[pygame.K_LEFT]:
+        barra.x -= velocidade
+    
+    if barra.left < 0:
+        barra.left = 0
+    if barra.right > 800:
+        barra.right = 800
 
 
 
@@ -147,7 +152,7 @@ def tela_de_jogo():
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     fim_jogo = True
-                movimentar_barra(evento)
+                movimentar_barra()
             pygame.display.flip()
             relogio.tick(60)
 tela_de_jogo()
