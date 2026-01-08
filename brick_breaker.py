@@ -31,7 +31,7 @@ pontuacao = 0
 
 tamanho_da_bola = 15
 bola = pygame.Rect(100,375, tamanho_da_bola, tamanho_da_bola)
-velocidade_padrao = [5, -5]
+velocidade_da_bola = [5, -5]
 barra_largura_padrao = 100
 barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
@@ -128,8 +128,6 @@ def tela_de_abertura():
 tela_de_abertura()
 
 
-
-
 def movimentar_barra():
     mouse_x, mouse_y = pygame.mouse.get_pos()
     barra.centerx = mouse_x
@@ -149,7 +147,20 @@ def movimentar_barra():
 
 
 def movimentar_bola():
-    pass
+    global velocidade_da_bola
+
+    bola.x += velocidade_da_bola[0]
+    bola.y += velocidade_da_bola[1]
+
+    if bola.left <= 0 or bola.right >= 800:
+        velocidade_da_bola[0] *=-1
+
+    if bola.top <= 0:
+        velocidade_da_bola[1] *=-1
+
+    if bola.colliderect(barra):
+        velocidade_da_bola[1] *=-1
+        bola.bottom = barra.top
 
     for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -166,8 +177,13 @@ def tela_de_jogo():
 
         while not fim_jogo:
             tela.fill(cores["branco"])
+
+            movimentar_bola()
+            movimentar_barra()
+
             pygame.draw.rect(tela, cores["roxo"], barra)
             pygame.draw.rect(tela, cores["roxo"], bola)
+
             for bloco in blocos:
                 pygame.draw.rect(tela, cor_dos_blocos(nivel), bloco["rect"])
 
@@ -175,7 +191,7 @@ def tela_de_jogo():
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     fim_jogo = True
-                movimentar_barra()
+                
             pygame.display.flip()
             relogio.tick(60)
 tela_de_jogo()
