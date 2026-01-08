@@ -36,7 +36,7 @@ barra_largura_padrao = 100
 barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
 
-def criar_blocos(nivel): #amg eu termino essa função amanha
+def criar_blocos(nivel): 
     blocos = []
 
     tamanho_do_bloco = (85, 25)
@@ -46,13 +46,43 @@ def criar_blocos(nivel): #amg eu termino essa função amanha
     largura_da_tela = tamanho_da_tela[0]
     largura_total_da_tela = (8 * (85)) + (7 * espaco_x)
     x_inicial = (largura_da_tela - largura_total_da_tela) // 2
+    y_inicial = 50
 
+    if nivel == 3:
+        resistencia = 2
+    else:
+        resistencia = 1
 
+    largura_da_tela = tamanho_da_tela[0]
+    largura_total_da_tela = (8 * (85)) + (7 * espaco_x)
+    x_inicial = (largura_da_tela - largura_total_da_tela) // 2
 
+    y_inicial = 50
 
+    if nivel == 3:
+        resistencia = 2
+    else:
+        resistencia = 1
 
+    for linha in range(5):
+        for coluna in range(8):
+            x = x_inicial + coluna * ((85) + espaco_x)
+            y = y_inicial + linha * ((25) + espaco_y)
 
+            bloco = pygame.Rect(x, y, (85), (25))
+            blocos.append({
+                "rect": bloco,
+                "vida": resistencia
+            })
 
+    return blocos
+
+def cor_dos_blocos(nivel):
+    if nivel == 2:
+        return cores["azul escuro"]
+    if nivel == 3:
+        return cores["verde escuro"]
+    return cores["roxo escuro"]
 
 
 tamanho_do_botao = (200, 60)
@@ -120,9 +150,6 @@ def movimentar_barra():
 
 def movimentar_bola():
     pass
-
-
-
 
     for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
