@@ -162,12 +162,14 @@ def movimentar_bola():
 
 def tela_de_jogo(): 
         fim_jogo = False 
+        blocos =  criar_blocos(nivel)
 
         while not fim_jogo:
             tela.fill(cores["branco"])
-            pygame.draw.rect(tela, cores["lílas"], barra)
-            pygame.draw.rect(tela, cores["roxo escuro"], bola)
-
+            pygame.draw.rect(tela, cores["roxo"], barra)
+            pygame.draw.rect(tela, cores["roxo"], bola)
+            for bloco in blocos:
+                pygame.draw.rect(tela, cor_dos_blocos(nivel), bloco["rect"])
 
 
             for evento in pygame.event.get():
