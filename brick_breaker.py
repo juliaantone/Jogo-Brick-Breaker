@@ -31,7 +31,7 @@ pontuacao = 0
 
 tamanho_da_bola = 15
 bola = pygame.Rect(100,375, tamanho_da_bola, tamanho_da_bola)
-velocidade_da_bola = [8, -8]
+velocidade_da_bola = [5, -5]
 barra_largura_padrao = 100
 barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
