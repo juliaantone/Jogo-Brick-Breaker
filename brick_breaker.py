@@ -31,7 +31,7 @@ pontuacao = 0
 
 tamanho_da_bola = 15
 bola = pygame.Rect(100,375, tamanho_da_bola, tamanho_da_bola)
-velocidade_da_bola = [5, -5]
+velocidade_da_bola = [8, -8]
 barra_largura_padrao = 100
 barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
@@ -136,14 +136,7 @@ def movimentar_barra():
     if barra.right > 800:
         barra.right = 800
 
-    for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-                pygame.display.flip()
-            relogio.tick(60)
-
+    
 
 def bola_fora():
     bola.centerx = 400
@@ -170,13 +163,7 @@ def movimentar_bola():
     if bola.top > 600:
         bola_fora()
 
-    for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-                pygame.display.flip()
-            relogio.tick(60)
+    
 
 
 def tela_de_jogo(): 
