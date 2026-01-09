@@ -146,6 +146,12 @@ def movimentar_barra():
             relogio.tick(60)
 
 
+def bola_fora():
+    bola.centerx = 400
+    bola.centery = 375
+    velocidade_da_bola[0] = 5
+    velocidade_da_bola[1] = -5
+
 def movimentar_bola():
     global velocidade_da_bola
 
@@ -161,6 +167,9 @@ def movimentar_bola():
     if bola.colliderect(barra):
         velocidade_da_bola[1] *=-1
         bola.bottom = barra.top
+
+    if bola.top > 600:
+        bola_fora()
 
     for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
