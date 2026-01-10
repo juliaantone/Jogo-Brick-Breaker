@@ -155,8 +155,6 @@ def movimentar_bola():
         velocidade_da_bola[1] *=-1
         bola.bottom = barra.top
     if bola.top > 600:
-
-    
         bola_fora()
 
 
