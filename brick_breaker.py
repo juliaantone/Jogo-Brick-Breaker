@@ -73,8 +73,8 @@ def criar_blocos(nivel):
                 "rect": bloco,
                 "vida": resistencia
             })
-
     return blocos
+
 
 def cor_dos_blocos(nivel):
     if nivel == 2:
@@ -88,6 +88,7 @@ tamanho_do_botao = (200, 60)
 x_botao = (800) // 2 - (200) // 2
 y_botao = 350
 botao_jogar = pygame.Rect(x_botao, y_botao, (200), (60))
+
 
 def tela_de_abertura():
     while True:
@@ -107,8 +108,7 @@ def tela_de_abertura():
             pygame.draw.rect(tela, cores["branco"], botao_jogar)
 
         texto_botao = fonte_do_botao.render("JOGAR", True, cores["roxo"])
-        tela.blit(
-            texto_botao,
+        tela.blit(texto_botao,
             (
                 botao_jogar.x + (200) // 2 - texto_botao.get_width() // 2,
                 botao_jogar.y + (60) // 2 - texto_botao.get_height() // 2
@@ -137,12 +137,12 @@ def movimentar_barra():
         barra.right = 800
 
     
-
 def bola_fora():
     bola.centerx = 400
     bola.centery = 375
     velocidade_da_bola[0] = 5
     velocidade_da_bola[1] = -5
+
 
 def movimentar_bola():
     global velocidade_da_bola
@@ -162,8 +162,6 @@ def movimentar_bola():
 
     if bola.top > 600:
         bola_fora()
-
-    
 
 
 def tela_de_jogo(): 
