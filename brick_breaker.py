@@ -119,11 +119,9 @@ def tela_de_abertura():
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
         
         pygame.display.flip()
         relogio.tick(60)
-
 tela_de_abertura()
 
 
@@ -146,20 +144,16 @@ def bola_fora():
 
 def movimentar_bola():
     global velocidade_da_bola
-
     bola.x += velocidade_da_bola[0]
     bola.y += velocidade_da_bola[1]
 
     if bola.left <= 0 or bola.right >= 800:
         velocidade_da_bola[0] *=-1
-
     if bola.top <= 0:
         velocidade_da_bola[1] *=-1
-
     if bola.colliderect(barra):
         velocidade_da_bola[1] *=-1
         bola.bottom = barra.top
-
     if bola.top > 600:
         bola_fora()
 
@@ -178,7 +172,7 @@ def tela_de_jogo():
 
         while not fim_jogo:
             tela.fill(cores["branco"])
-            
+
             desenhar_texto()
             movimentar_bola()
             movimentar_barra()
