@@ -180,6 +180,7 @@ def tela_de_jogo():
             for bloco in blocos:
                 if bola.colliderect(bloco["rect"]):
                     velocidade_da_bola[1] *= -1
+                    bloco["vida"] -= 1
 
             movimentar_barra()
 
