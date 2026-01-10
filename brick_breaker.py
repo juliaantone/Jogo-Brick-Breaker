@@ -178,13 +178,8 @@ def tela_de_jogo():
             desenhar_texto()
             movimentar_bola()
             for bloco in blocos:
-                
-                    
-                   
+                if bola.colliderect(bloco["rect"]):
 
-                    
-                        
-                    
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
