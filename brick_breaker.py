@@ -183,6 +183,7 @@ def tela_de_jogo():
                     bloco["vida"] -= 1
 
                     if bloco["vida"] <= 0:
+                        blocos.remove(bloco)
 
             movimentar_barra()
 
