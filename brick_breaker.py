@@ -22,7 +22,7 @@ cores = {
 
 fonte_do_titulo = pygame.font.SysFont("impact", 68)
 fonte_do_botao = pygame.font.SysFont("arial bold", 36)
-fonte_vidas_nivel = pygame.font.SysFont("arial", 26)
+fonte_vidas_nivel = pygame.font.SysFont("arial", 24)
 fonte_pontuacao = pygame.font.SysFont("arial bold", 46)
 
 vidas = 5
@@ -164,13 +164,22 @@ def movimentar_bola():
         bola_fora()
 
 
+def desenhar_texto():
+    texto_vidas = fonte_vidas_nivel.render(f"VIDAS:{vidas}", True, cores["roxo"])
+    tela.blit( texto_vidas, (tamanho_da_tela[0] - texto_vidas.get_width() - 25,  10))
+
+    texto_nivel = fonte_vidas_nivel.render(f"NÍVEL: {nivel}", True, cores["roxo"])
+    tela.blit(texto_nivel, (25, 10))
+
+
 def tela_de_jogo(): 
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
 
         while not fim_jogo:
             tela.fill(cores["branco"])
-
+            
+            desenhar_texto()
             movimentar_bola()
             movimentar_barra()
 
