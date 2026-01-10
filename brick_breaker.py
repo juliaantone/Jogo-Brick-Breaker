@@ -182,6 +182,8 @@ def tela_de_jogo():
                     velocidade_da_bola[1] *= -1
                     bloco["vida"] -= 1
 
+                    if bloco["vida"] <= 0:
+
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
