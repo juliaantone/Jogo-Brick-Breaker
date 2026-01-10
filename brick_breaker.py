@@ -184,7 +184,7 @@ def tela_de_jogo():
 
                     if bloco["vida"] <= 0:
                         blocos.remove(bloco)
-
+                    break
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
