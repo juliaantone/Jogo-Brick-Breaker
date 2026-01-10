@@ -179,6 +179,7 @@ def tela_de_jogo():
             movimentar_bola()
             for bloco in blocos:
                 if bola.colliderect(bloco["rect"]):
+                    velocidade_da_bola[1] *= -1
 
             movimentar_barra()
 
