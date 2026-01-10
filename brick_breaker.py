@@ -155,6 +155,8 @@ def movimentar_bola():
         velocidade_da_bola[1] *=-1
         bola.bottom = barra.top
     if bola.top > 600:
+
+    
         bola_fora()
 
 
@@ -175,6 +177,14 @@ def tela_de_jogo():
 
             desenhar_texto()
             movimentar_bola()
+            for bloco in blocos:
+                if bola.colliderect(bloco["rect"]):
+                    velocidade_da_bola[1] *= -1
+                    bloco["vida"] -= 1
+
+                    if bloco["vida"] <= 0:
+                        blocos.remove(bloco)
+                    break
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
@@ -182,7 +192,6 @@ def tela_de_jogo():
 
             for bloco in blocos:
                 pygame.draw.rect(tela, cor_dos_blocos(nivel), bloco["rect"])
-
 
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
