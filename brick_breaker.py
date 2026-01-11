@@ -136,6 +136,8 @@ def movimentar_barra():
 
     
 def bola_fora():
+    global vidas
+    vidas -= 1
     bola.centerx = 400
     bola.centery = 375
     velocidade_da_bola[0] = 5
@@ -156,6 +158,8 @@ def movimentar_bola():
         bola.bottom = barra.top
     if bola.top > 600:
         bola_fora()
+        if vidas <= 0:
+            return  "acabou"
 
 
 def desenhar_texto():
