@@ -163,7 +163,7 @@ def movimentar_bola():
 
 
 def desenhar_texto():
-    texto_vidas = fonte_vidas_nivel.render(f"VIDAS:{vidas}", True, cores["roxo"])
+    texto_vidas = fonte_vidas_nivel.render(f"VIDAS: {vidas}", True, cores["roxo"])
     tela.blit( texto_vidas, (tamanho_da_tela[0] - texto_vidas.get_width() - 25,  10))
 
     texto_nivel = fonte_vidas_nivel.render(f"NÍVEL: {nivel}", True, cores["roxo"])
@@ -178,7 +178,9 @@ def tela_de_jogo():
             tela.fill(cores["branco"])
 
             desenhar_texto()
-            movimentar_bola()
+            estado = movimentar_bola()
+            if estado == "acabou":
+                fim_jogo == True
             for bloco in blocos:
                 if bola.colliderect(bloco["rect"]):
                     velocidade_da_bola[1] *= -1
