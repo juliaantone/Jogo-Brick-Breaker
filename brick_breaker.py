@@ -188,7 +188,7 @@ def resetar_jogo():
 
 def tela_fim_de_jogo():
     while True:
-        tela.fill(cores["lílas"])
+        tela.fill(cores["roxo claro"])
          
         título = fonte_do_titulo.render("VOCÊ PERDEU!", True, cores["roxo"])
         tela.blit(título, ((800) // 2 - título.get_width() // 2, 180))
