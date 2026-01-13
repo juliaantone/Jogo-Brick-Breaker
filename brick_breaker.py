@@ -161,14 +161,7 @@ def movimentar_bola():
         if vidas <= 0:
             return  "acabou"
 
-def tela_fim_de_jogo():
-    while True:
-        tela.fill(cores["lílas"])
-         
-        título = fonte_do_titulo.render("VOCÊ PERDEU!", True, cores["roxo"])
-        tela.blit(título, ((800) // 2 - título.get_width() // 2, 180))
 
-        
 def desenhar_texto():
     texto_vidas = fonte_vidas_nivel.render(f"VIDAS: {vidas}", True, cores["roxo"])
     tela.blit( texto_vidas, (tamanho_da_tela[0] - texto_vidas.get_width() - 25,  10))
@@ -176,7 +169,18 @@ def desenhar_texto():
     texto_nivel = fonte_vidas_nivel.render(f"NÍVEL: {nivel}", True, cores["roxo"])
     tela.blit(texto_nivel, (25, 10))
 
+tamanho_do_botao_jogar_novamente = (400, 60)
 
+
+def tela_fim_de_jogo():
+    while True:
+        tela.fill(cores["lílas"])
+         
+        título = fonte_do_titulo.render("VOCÊ PERDEU!", True, cores["roxo"])
+        tela.blit(título, ((800) // 2 - título.get_width() // 2, 180))
+
+        posicao_do_mouse = pygame.mouse.get_pos()
+        mouse_clicado = pygame.mouse.get_pressed()
 def tela_de_jogo(): 
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
@@ -204,13 +208,12 @@ def tela_de_jogo():
             for bloco in blocos:
                 pygame.draw.rect(tela, cor_dos_blocos(nivel), bloco["rect"])
 
-            
-                for evento in pygame.event.get():
-                    if evento.type == pygame.QUIT:
-                        fim_jogo = True
-            
-                pygame.display.flip()
-                relogio.tick(60)
+            for evento in pygame.event.get():
+                if evento.type == pygame.QUIT:
+                    fim_jogo = True
+                
+            pygame.display.flip()
+            relogio.tick(60)
 tela_de_jogo()
 pygame.quit()
 sys.exit()
