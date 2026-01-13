@@ -180,7 +180,7 @@ def tela_de_jogo():
             desenhar_texto()
             estado = movimentar_bola()
             if estado == "acabou":
-                fim_jogo == True
+                fim_jogo = True
             for bloco in blocos:
                 if bola.colliderect(bloco["rect"]):
                     velocidade_da_bola[1] *= -1
