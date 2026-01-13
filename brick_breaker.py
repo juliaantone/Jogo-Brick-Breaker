@@ -194,7 +194,7 @@ def tela_fim_de_jogo():
         texto_botao_jogar_novamente = fonte_do_botao.render("JOGAR NOVAMENTE", True, cores["roxo"])
         tela.blit(texto_botao_jogar_novamente,
             (
-                      botao_jogar_novamente.x + (800) // 2 - texto_botao_jogar_novamente.get_width() // 2,
+                      botao_jogar_novamente.x + (400) // 2 - texto_botao_jogar_novamente.get_width() // 2,
                       botao_jogar_novamente.y + (60) // 2 - texto_botao_jogar_novamente.get_height() // 2
             )
         )
@@ -203,6 +203,8 @@ def tela_fim_de_jogo():
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+        pygame.display.flip()
+        relogio.tick(60)
 
 def tela_de_jogo(): 
         fim_jogo = False 
@@ -214,7 +216,8 @@ def tela_de_jogo():
             desenhar_texto()
             estado = movimentar_bola()
             if estado == "acabou":
-                fim_jogo = True
+                tela_fim_de_jogo()
+                return
             for bloco in blocos:
                 if bola.colliderect(bloco["rect"]):
                     velocidade_da_bola[1] *= -1
