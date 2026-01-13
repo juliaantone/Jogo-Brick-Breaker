@@ -170,7 +170,9 @@ def desenhar_texto():
     tela.blit(texto_nivel, (25, 10))
 
 tamanho_do_botao_jogar_novamente = (400, 60)
-
+x_botao = (800) // 2 - (400) // 2
+y_botao = 350 
+botao_jogar_novamente = pygame.Rect(x_botao, y_botao, (400), (60))
 
 def tela_fim_de_jogo():
     while True:
@@ -181,6 +183,27 @@ def tela_fim_de_jogo():
 
         posicao_do_mouse = pygame.mouse.get_pos()
         mouse_clicado = pygame.mouse.get_pressed()
+        
+        if botao_jogar_novamente.collidepoint(posicao_do_mouse):
+            pygame.draw.rect(tela, cores["lílas"], botao_jogar_novamente)
+            if mouse_clicado[0]:
+                return
+        else:
+            pygame.draw.rect(tela, cores["branco"], botao_jogar_novamente)
+
+        texto_botao_jogar_novamente = fonte_do_botao.render("JOGAR NOVAMENTE", True, cores["roxo"])
+        tela.blit(texto_botao_jogar_novamente,
+            (
+                      botao_jogar_novamente.x + (800) // 2 - texto_botao_jogar_novamente.get_width() // 2,
+                      botao_jogar_novamente.y + (60) // 2 - texto_botao_jogar_novamente.get_height() // 2
+            )
+        )
+
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
 def tela_de_jogo(): 
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
