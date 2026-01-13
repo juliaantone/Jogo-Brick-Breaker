@@ -174,6 +174,18 @@ x_botao = (800) // 2 - (400) // 2
 y_botao = 350 
 botao_jogar_novamente = pygame.Rect(x_botao, y_botao, (400), (60))
 
+def resetar_jogo():
+    global vidas, pontuacao, nivel, velocidade_da_bola
+
+    vidas = 5
+    pontuacao = 0
+    nivel = 1
+    bola.centerx = 400
+    bola.centery = 375
+    velocidade_da_bola[0] = 5
+    velocidade_da_bola[1] = -5
+    barra.centerx = 400
+
 def tela_fim_de_jogo():
     while True:
         tela.fill(cores["lílas"])
@@ -187,7 +199,11 @@ def tela_fim_de_jogo():
         if botao_jogar_novamente.collidepoint(posicao_do_mouse):
             pygame.draw.rect(tela, cores["lílas"], botao_jogar_novamente)
             if mouse_clicado[0]:
+                tela_de_abertura()
+                resetar_jogo()
+                tela_de_jogo()
                 return
+        
         else:
             pygame.draw.rect(tela, cores["branco"], botao_jogar_novamente)
 
