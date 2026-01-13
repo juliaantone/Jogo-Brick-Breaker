@@ -161,6 +161,8 @@ def movimentar_bola():
         if vidas <= 0:
             return  "acabou"
 
+def tela_fim_de_jogo():
+    
 
 def desenhar_texto():
     texto_vidas = fonte_vidas_nivel.render(f"VIDAS: {vidas}", True, cores["roxo"])
@@ -197,12 +199,13 @@ def tela_de_jogo():
             for bloco in blocos:
                 pygame.draw.rect(tela, cor_dos_blocos(nivel), bloco["rect"])
 
-            for evento in pygame.event.get():
-                if evento.type == pygame.QUIT:
-                    fim_jogo = True
-                
-            pygame.display.flip()
-            relogio.tick(60)
+            
+                for evento in pygame.event.get():
+                    if evento.type == pygame.QUIT:
+                        fim_jogo = True
+            
+                pygame.display.flip()
+                relogio.tick(60)
 tela_de_jogo()
 pygame.quit()
 sys.exit()
