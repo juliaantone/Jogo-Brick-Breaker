@@ -199,10 +199,7 @@ def tela_fim_de_jogo():
         if botao_jogar_novamente.collidepoint(posicao_do_mouse):
             pygame.draw.rect(tela, cores["lílas"], botao_jogar_novamente)
             if mouse_clicado[0]:
-                tela_de_abertura()
-                resetar_jogo()
-                tela_de_jogo()
-                return
+                return 
         
         else:
             pygame.draw.rect(tela, cores["branco"], botao_jogar_novamente)
@@ -259,6 +256,11 @@ def tela_de_jogo():
                 
             pygame.display.flip()
             relogio.tick(60)
-tela_de_jogo()
+while True:
+    tela_de_abertura()
+    resetar_jogo()
+    tela_de_jogo()
+
+
 pygame.quit()
 sys.exit()
