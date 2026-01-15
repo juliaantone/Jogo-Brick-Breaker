@@ -242,6 +242,7 @@ def tela_de_jogo():
                     if bloco["vida"] <= 0:
                         blocos.remove(bloco)
                         global pontuacao
+                        pontuacao +=10
                     break
             movimentar_barra()
 
