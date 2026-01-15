@@ -224,7 +224,40 @@ def tela_ganhou():
 
 
 def tela_fim_de_jogo():
-    
+    while True:
+        tela.fill(cores["roxo claro"])
+         
+        título = fonte_do_titulo.render("VOCÊ GANHOU!", True, cores["roxo"])
+        tela.blit(título, ((800) // 2 - título.get_width() // 2, 180))
+
+        posicao_do_mouse = pygame.mouse.get_pos()
+        mouse_clicado = pygame.mouse.get_pressed()
+        
+        if botao_jogar_novamente.collidepoint(posicao_do_mouse):
+            pygame.draw.rect(tela, cores["lílas"], botao_jogar_novamente)
+            if mouse_clicado[0]:
+                return 
+        
+        else:
+            pygame.draw.rect(tela, cores["branco"], botao_jogar_novamente)
+
+        pontos_texto = fonte_pontuacao.render(f"PONTUAÇÃO: {pontuacao}", True, cores["roxo escuro"])
+        tela.blit(pontos_texto, (280, 280))
+
+        texto_botao_jogar_novamente = fonte_do_botao.render("JOGAR NOVAMENTE", True, cores["roxo"])
+        tela.blit(texto_botao_jogar_novamente,
+            (
+                      botao_jogar_novamente.x + (400) // 2 - texto_botao_jogar_novamente.get_width() // 2,
+                      botao_jogar_novamente.y + (60) // 2 - texto_botao_jogar_novamente.get_height() // 2
+            )
+        )
+
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.flip()
+        relogio.tick(60)
 
 def tela_de_jogo(): 
         fim_jogo = False 
