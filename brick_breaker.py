@@ -281,9 +281,10 @@ def tela_de_jogo():
                         global pontuacao
                         pontuacao +=10
                     break
-
-            
-            
+            if len(blocos) == 0:
+                tela_ganhou()
+                return
+                
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
