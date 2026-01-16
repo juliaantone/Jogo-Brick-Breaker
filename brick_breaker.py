@@ -223,11 +223,11 @@ def tela_ganhou():
         relogio.tick(60)
 
 
-def tela_fim_de_jogo():
+def tela_perdeu():
     while True:
         tela.fill(cores["roxo claro"])
          
-        título = fonte_do_titulo.render("VOCÊ GANHOU!", True, cores["roxo"])
+        título = fonte_do_titulo.render("VOCÊ PERDEU!", True, cores["roxo"])
         tela.blit(título, ((800) // 2 - título.get_width() // 2, 180))
 
         posicao_do_mouse = pygame.mouse.get_pos()
@@ -269,7 +269,7 @@ def tela_de_jogo():
             desenhar_texto()
             estado = movimentar_bola()
             if estado == "acabou":
-                tela_fim_de_jogo()
+                tela_perdeu()
                 return
             for bloco in blocos:
                 if bola.colliderect(bloco["rect"]):
