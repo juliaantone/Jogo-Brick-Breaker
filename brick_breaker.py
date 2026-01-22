@@ -188,6 +188,11 @@ def resetar_jogo():
     velocidade_da_bola[1] = -5
     barra.centerx = 400
 
+
+def poderes_por_nivel():
+    return
+
+
 def tela_ganhou():
     while True:
         tela.fill(cores["roxo claro"])
