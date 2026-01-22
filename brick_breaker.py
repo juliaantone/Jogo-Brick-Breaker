@@ -310,5 +310,6 @@ while True:
     tela_de_abertura()
     resetar_jogo()
     tela_de_jogo()
+    
 pygame.quit()
 sys.exit()
