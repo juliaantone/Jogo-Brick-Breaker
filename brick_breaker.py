@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 pygame.init()
 tamanho_da_tela = (800, 600)
