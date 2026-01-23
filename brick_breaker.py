@@ -25,7 +25,7 @@ cores = {
 fonte_do_titulo = pygame.font.SysFont("impact", 68)
 fonte_do_botao = pygame.font.SysFont("arial bold", 36)
 fonte_vidas_nivel = pygame.font.SysFont("times new roman", 24)
-fonte_pontuacao = pygame.font.SysFont("arial bold", 44)
+fonte_pontuacao = pygame.font.SysFont("times new roman", 42)
 
 vidas = 5
 nivel = 1
@@ -212,7 +212,7 @@ def tela_ganhou():
             pygame.draw.rect(tela, cores["branco"], botao_jogar_novamente)
 
         pontos_texto = fonte_pontuacao.render(f"PONTUAÇÃO: {pontuacao}", True, cores["roxo escuro"])
-        tela.blit(pontos_texto, (280, 280))
+        tela.blit(pontos_texto, (230, 280))
 
         texto_botao_jogar_novamente = fonte_do_botao.render("JOGAR NOVAMENTE", True, cores["roxo"])
         tela.blit(texto_botao_jogar_novamente,
@@ -249,7 +249,7 @@ def tela_perdeu():
             pygame.draw.rect(tela, cores["branco"], botao_jogar_novamente)
 
         pontos_texto = fonte_pontuacao.render(f"PONTUAÇÃO: {pontuacao}", True, cores["roxo escuro"])
-        tela.blit(pontos_texto, (280, 280))
+        tela.blit(pontos_texto, (230, 280))
 
         texto_botao_jogar_novamente = fonte_do_botao.render("JOGAR NOVAMENTE", True, cores["roxo"])
         tela.blit(texto_botao_jogar_novamente,
