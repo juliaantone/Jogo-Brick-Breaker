@@ -24,7 +24,7 @@ cores = {
 
 fonte_do_titulo = pygame.font.SysFont("impact", 68)
 fonte_do_botao = pygame.font.SysFont("arial bold", 36)
-fonte_vidas_nivel = pygame.font.SysFont("arial", 24)
+fonte_vidas_nivel = pygame.font.SysFont("times new roman", 24)
 fonte_pontuacao = pygame.font.SysFont("arial bold", 44)
 
 vidas = 5
