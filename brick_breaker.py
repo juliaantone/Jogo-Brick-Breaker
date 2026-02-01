@@ -192,6 +192,9 @@ def resetar_jogo():
 def poderes_por_nivel():
     return
 
+def tela_proximos_niveis():
+    return
+
 
 def tela_ganhou():
     while True:
