@@ -270,6 +270,7 @@ def tela_perdeu():
         relogio.tick(60)
 
 def tela_de_jogo(): 
+        global nivel
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
 
@@ -292,9 +293,27 @@ def tela_de_jogo():
                         pontuacao +=10
                     break
             if len(blocos) == 0:
-                tela_ganhou()
-                return
-                
+                if nivel == 1:
+                    nivel = 2
+                    tela_proximos_niveis()
+                    blocos = criar_blocos(nivel)
+                    bola.centerx = 400
+                    bola.centery = 375
+                    velocidade_da_bola[0] = 5
+                    velocidade_da_bola[1] = -5
+                    continue
+                elif nivel == 2:
+                    nivel = 3
+                    tela_proximos_niveis()
+                    blocos = criar_blocos(nivel)
+                    bola.centerx = 400
+                    bola.centery = 375
+                    velocidade_da_bola[0] = 5
+                    velocidade_da_bola[1] = -5
+                    continue
+                elif nivel == 3:
+                    tela_ganhou()
+                    return
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
