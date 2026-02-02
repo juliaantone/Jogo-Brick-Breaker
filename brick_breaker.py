@@ -188,8 +188,10 @@ def resetar_jogo():
     velocidade_da_bola[1] = -5
     barra.centerx = 400
 
+poderes = []
+velocidade_poderes = []
 
-def poderes_por_nivel():
+def criar_poderes(x, y):
     return
 
 def tela_proximos_niveis():
