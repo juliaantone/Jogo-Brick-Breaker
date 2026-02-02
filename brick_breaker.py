@@ -327,7 +327,7 @@ def tela_de_jogo():
                     fim_jogo = True
                 
             pygame.display.flip()
-            relogio.tick(60)
+            relogio.tick(60) 
 while True:
     tela_de_abertura()
     resetar_jogo()
