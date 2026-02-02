@@ -193,7 +193,7 @@ velocidade_poderes = []
 
 def criar_poderes(x, y):
     poderes = pygame.Rect(x, y, 20, 20)
-    poderes.append 
+    poderes.append(poderes)
     return
 
 def tela_proximos_niveis():
