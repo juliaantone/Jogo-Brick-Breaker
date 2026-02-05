@@ -183,12 +183,49 @@ def resetar_jogo():
     barra.centerx = 400
 
 poderes = []
-velocidade_poderes = []
+velocidade_poder = 4
 
-def criar_poderes(x, y):
-    poderes = pygame.Rect(x, y, 20, 20)
-    poderes.append(poderes)
-    return
+def criar_poderes(x, y, tipo):
+    poder = {
+        "rect": pygame.Rect(x, y, 20, 20),
+        "tipo": tipo
+        }
+    poderes.append(poder)
+
+
+def atualizar_poderes():
+    global barra, velocidade_da_bola, bola_forte, tempo_bola_forte
+
+    for poder in poderes[:]:
+        poder["rect"].y += velocidade_poder
+        if poder["rect"].colliderect(barra):
+            tipo = poder["tipo"]
+
+            if tioi == "forte":
+                bola_forte = True
+                tempo_bola_forte = pygame.time.get_ticks()
+
+            elif tipo == "lento":
+                velocidade_da_bola[0] = int(velocidade_da_bola[0] * 0.7)
+                velocidade_da_bola[1] = int(velocidade_da_bola[1] * 0.7)
+
+            elif tipo == "aumentar":
+                centro = barra.centerx
+                barra.width += 20
+                if barra.width > 300:
+                    barra.width = 300
+                barra.centerx = centro
+
+            poderes.remove(poder)
+
+        elif poder["rect"].top > 600:
+            poderes.remove(poder)
+
+    if bola_forte:
+        if pygame.time.get_ticks() - tempo_bola_forte > 10000:
+            bola_forte = False    
+
+
 
 def tela_proximos_niveis():
     return
