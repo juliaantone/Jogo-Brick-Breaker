@@ -305,7 +305,7 @@ def tela_perdeu():
         relogio.tick(60)
 
 def tela_de_jogo(): 
-        global nivel
+        global nivel,pontuacao
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
 
@@ -343,6 +343,8 @@ def tela_de_jogo():
                     nivel = 2
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
+                    barra.width = barra_largura_padrao
+                    poderes.clear()
                     bola.centerx = 400
                     bola.centery = 375
                     velocidade_da_bola[0] = 5
@@ -352,6 +354,8 @@ def tela_de_jogo():
                     nivel = 3
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
+                    barra.width = barra_largura_padrao
+                    poderes.clear()
                     bola.centerx = 400
                     bola.centery = 375
                     velocidade_da_bola[0] = 5
@@ -379,7 +383,7 @@ def tela_de_jogo():
                 if tipo == "forte":
                     cor = cores["verde"]
                 elif tipo == "lento":
-                    cor = cores["verde"]
+                    cor = cores["lílas"]
                 else:
                     cor = cores["verde"]
                 
