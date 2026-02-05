@@ -29,7 +29,7 @@ fonte_pontuacao = pygame.font.SysFont("times new roman", 42)
 vidas = 5
 nivel = 1
 pontuacao = 0
-bola_forte False
+bola_forte = False
 tempo_bola_forte = 0
 
 tamanho_da_bola = 15
@@ -201,7 +201,7 @@ def atualizar_poderes():
         if poder["rect"].colliderect(barra):
             tipo = poder["tipo"]
 
-            if tioi == "forte":
+            if tipo == "forte":
                 bola_forte = True
                 tempo_bola_forte = pygame.time.get_ticks()
 
@@ -318,15 +318,26 @@ def tela_de_jogo():
                 tela_perdeu()
                 return
             for bloco in blocos:
-                if bola.colliderect(bloco["rect"]):
-                    velocidade_da_bola[1] *= -1
-                    bloco["vida"] -= 1
+                    if bola.colliderect(bloco["rect"]):
+                        if not bola_forte:
+                            velocidade_da_bola[1] *= -1
+                        bloco["vida"] -= 1
+                        if bloco["vida"] <= 0:
+                            blocos.remove(bloco)
+                            pontuacao += 10
 
-                    if bloco["vida"] <= 0:
-                        blocos.remove(bloco)
-                        global pontuacao
-                        pontuacao +=10
-                    break
+                            if nivel == 1:
+                                if random.randint(1, 100) <= 30:
+                                    criar_poderes(bloco["rect"].x, bloco["rect"].y, "aumentar")
+
+                            elif nivel == 2:
+                                if random.randint(1, 100) <= 30:
+                                    if random.choice([True, False]):
+                                        criar_poderes(bloco["rect"].x, bloco["rect"].y, "forte")
+                                    else:
+                                        criar_poderes(bloco["rect"].x, bloco["rect"].y, "lento")
+
+                        break
             if len(blocos) == 0:
                 if nivel == 1:
                     nivel = 2
@@ -360,7 +371,19 @@ def tela_de_jogo():
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     fim_jogo = True
+            atualizar_poderes()
+
+            for poder in poderes:
+                tipo = poder["tipo"]
+
+                if tipo == "forte":
+                    cor = cores["verde"]
+                elif tipo == "lento":
+                    cor = cores["verde"]
+                else:
+                    cor = cores["verde"]
                 
+                pygame.draw.rect(tela, cor, poder["rect"])
             pygame.display.flip()
             relogio.tick(60) 
 while True:
