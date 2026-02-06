@@ -381,9 +381,9 @@ def tela_de_jogo():
                 tipo = poder["tipo"]
 
                 if tipo == "forte":
-                    cor = cores["verde"]
+                    cor = cores["verde"] #o verde é pra poder quebrar vairios blocos de uma vez so
                 elif tipo == "lento":
-                    cor = cores["lílas"]
+                    cor = cores["lílas"] #o lilas é pra bola ficar mais lenta
                 else:
                     cor = cores["verde"]
                 
