@@ -347,7 +347,6 @@ def tela_de_jogo():
             if len(blocos) == 0:
                 if nivel == 1:
                     nivel = 2
-                    vidas = 5
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
                     barra.width = barra_largura_padrao
@@ -359,7 +358,6 @@ def tela_de_jogo():
                     continue
                 elif nivel == 2:
                     nivel = 3
-                    vidas = 5
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
                     barra.width = barra_largura_padrao
