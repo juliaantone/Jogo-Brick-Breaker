@@ -35,6 +35,12 @@ tempo_bola_forte = 0
 tamanho_da_bola = 15
 bola = pygame.Rect(100,375, tamanho_da_bola, tamanho_da_bola)
 velocidade_da_bola = [5, -5]
+bolas = [
+    {
+        "rect": pygame.Rect(100, 375, tamanho_da_bola, tamanho_da_bola),
+        "vel": [5, -5]
+    }
+]
 barra_largura_padrao = 100
 barra = pygame.Rect(0, 550, barra_largura_padrao, 15)
 
@@ -141,21 +147,29 @@ def bola_fora():
 
 
 def movimentar_bola():
-    global velocidade_da_bola
-    bola.x += velocidade_da_bola[0]
-    bola.y += velocidade_da_bola[1]
+    global vidas
 
-    if bola.left <= 0 or bola.right >= 800:
-        velocidade_da_bola[0] *=-1
-    if bola.top <= 0:
-        velocidade_da_bola[1] *=-1
-    if bola.colliderect(barra):
-        velocidade_da_bola[1] *=-1
-        bola.bottom = barra.top
-    if bola.top > 600:
-        bola_fora()
+    for bola in bolas[:]:
+        bola["rect"].x += bola["vel"][0]
+        bola["rect"].y += bola["vel"][1]
+        if bola["rect"].left <= 0 or bola["rect"].right >= 800:
+            bola["vel"][0] *= -1
+        if bola["rect"].top <= 0:
+            bola["vel"][1] *= -1
+        if bola["rect"].colliderect(barra):
+            bola["vel"][1] *= -1
+            bola["rect"].bottom = barra.top
+        if bola["rect"].top > 600:
+            bolas.remove(bola)
+
+    if len(bolas) == 0:
+        vidas -= 1
+        bolas.append({
+            "rect": pygame.Rect(400, 375, tamanho_da_bola, tamanho_da_bola),
+            "vel": [5, -5]
+        })
         if vidas <= 0:
-            return  "acabou"
+            return "acabou"
 
 
 def desenhar_texto():
