@@ -175,7 +175,7 @@ def resetar_jogo():
 
     vidas = 5
     pontuacao = 0
-    nivel = 1
+    nivel = 2
     bola.centerx = 400
     bola.centery = 375
     velocidade_da_bola[0] = 5
@@ -206,8 +206,14 @@ def atualizar_poderes():
                 tempo_bola_forte = pygame.time.get_ticks()
 
             elif tipo == "lento":
-                velocidade_da_bola[0] = int(velocidade_da_bola[0] * 0.7)
-                velocidade_da_bola[1] = int(velocidade_da_bola[1] * 0.7)
+                velocidade_da_bola[0] *= 0.7
+                velocidade_da_bola[1] *= 0.7
+
+                if abs(velocidade_da_bola[0]) < 2:
+                    velocidade_da_bola[0] = 2 if velocidade_da_bola[0] > 0 else -2
+
+                if abs(velocidade_da_bola[1]) < 2:
+                    velocidade_da_bola[1] = 2 if velocidade_da_bola[1] > 0 else -2
 
             elif tipo == "aumentar":
                 centro = barra.centerx
@@ -305,7 +311,7 @@ def tela_perdeu():
         relogio.tick(60)
 
 def tela_de_jogo(): 
-        global nivel,pontuacao
+        global nivel,pontuacao, vidas
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
 
@@ -341,6 +347,7 @@ def tela_de_jogo():
             if len(blocos) == 0:
                 if nivel == 1:
                     nivel = 2
+                    vidas = 5
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
                     barra.width = barra_largura_padrao
@@ -352,6 +359,7 @@ def tela_de_jogo():
                     continue
                 elif nivel == 2:
                     nivel = 3
+                    vidas = 5
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
                     barra.width = barra_largura_padrao
