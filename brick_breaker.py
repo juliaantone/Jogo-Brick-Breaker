@@ -347,7 +347,7 @@ def tela_de_jogo():
 
                         break
             if len(blocos) == 0:
-                if nivel == 1: #
+                if nivel == 1: 
                     nivel = 2
                     tela_proximos_niveis()
                     blocos = criar_blocos(nivel)
