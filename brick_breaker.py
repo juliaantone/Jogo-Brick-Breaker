@@ -200,14 +200,24 @@ def atualizar_poderes():
         poder["rect"].y += velocidade_poder
         if poder["rect"].colliderect(barra):
             tipo = poder["tipo"]
-
+            
             if tipo == "forte":
                 bola_forte = True
                 tempo_bola_forte = pygame.time.get_ticks()
 
             elif tipo == "lento":
-                velocidade_da_bola[0] = int(velocidade_da_bola[0] * 0.7)
-                velocidade_da_bola[1] = int(velocidade_da_bola[1] * 0.7)
+                velocidade_da_bola[0] *= 0.7
+                velocidade_da_bola[1] *= 0.7
+
+                if abs(velocidade_da_bola[0]) < 2:
+                    velocidade_da_bola[0] = 2 if velocidade_da_bola[0] > 0 else -2
+
+                if abs(velocidade_da_bola[1]) < 2:
+                    velocidade_da_bola[1] = 2 if velocidade_da_bola[1] > 0 else -2
+
+            elif tipo == "rapido":
+               velocidade_da_bola[0] *= 1.3
+               velocidade_da_bola[1] *= 1.3
 
             elif tipo == "aumentar":
                 centro = barra.centerx
@@ -305,7 +315,7 @@ def tela_perdeu():
         relogio.tick(60)
 
 def tela_de_jogo(): 
-        global nivel,pontuacao
+        global nivel,pontuacao, vidas
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
 
@@ -332,10 +342,8 @@ def tela_de_jogo():
 
                             elif nivel == 2:
                                 if random.randint(1, 100) <= 30:
-                                    if random.choice([True, False]):
-                                        criar_poderes(bloco["rect"].x, bloco["rect"].y, "forte")
-                                    else:
-                                        criar_poderes(bloco["rect"].x, bloco["rect"].y, "lento")
+                                    tipo = random.choice(["forte", "lento", "rapido"])
+                                    criar_poderes(bloco["rect"].x, bloco["rect"].y, tipo)
 
                         break
             if len(blocos) == 0:
@@ -384,6 +392,8 @@ def tela_de_jogo():
                     cor = cores["verde"] #o verde é pra poder quebrar vairios blocos de uma vez so
                 elif tipo == "lento":
                     cor = cores["lílas"] #o lilas é pra bola ficar mais lenta
+                elif tipo == "rapido":
+                    cor = cores["azul escuro"]
                 else:
                     cor = cores["verde"]
                 
