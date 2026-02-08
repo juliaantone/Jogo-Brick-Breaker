@@ -346,7 +346,7 @@ def tela_perdeu():
         relogio.tick(60)
 
 def tela_de_jogo(): 
-        global nivel,pontuacao, vidas
+        global nivel, pontuacao, vidas
         fim_jogo = False 
         blocos =  criar_blocos(nivel)
 
@@ -359,10 +359,14 @@ def tela_de_jogo():
                 tela_perdeu()
                 return
             for bloco in blocos:
-                    if bola.colliderect(bloco["rect"]):
+                for b in bolas:
+                    if b["rect"].colliderect(bloco["rect"]):
+
                         if not bola_forte:
-                            velocidade_da_bola[1] *= -1
+                            b["vel"][1] *= -1
+
                         bloco["vida"] -= 1
+
                         if bloco["vida"] <= 0:
                             blocos.remove(bloco)
                             pontuacao += 10
@@ -376,7 +380,11 @@ def tela_de_jogo():
                                     tipo = random.choice(["forte", "lento", "rapido"])
                                     criar_poderes(bloco["rect"].x, bloco["rect"].y, tipo)
 
+                            elif nivel == 3:
+                                if random.randint(1, 100) <= 40:
+                                    criar_poderes(bloco["rect"].x, bloco["rect"].y, "dupla")
                         break
+
             if len(blocos) == 0:
                 if nivel == 1: 
                     nivel = 2
@@ -384,10 +392,11 @@ def tela_de_jogo():
                     blocos = criar_blocos(nivel)
                     barra.width = barra_largura_padrao
                     poderes.clear()
-                    bola.centerx = 400
-                    bola.centery = 375
-                    velocidade_da_bola[0] = 5
-                    velocidade_da_bola[1] = -5
+                    bolas.clear()
+                    bolas.append({
+                        "rect": pygame.Rect(400, 375, tamanho_da_bola, tamanho_da_bola),
+                        "vel": [5, -5]
+                    })
                     continue
                 elif nivel == 2:
                     nivel = 3
@@ -395,10 +404,11 @@ def tela_de_jogo():
                     blocos = criar_blocos(nivel)
                     barra.width = barra_largura_padrao
                     poderes.clear()
-                    bola.centerx = 400
-                    bola.centery = 375
-                    velocidade_da_bola[0] = 5
-                    velocidade_da_bola[1] = -5
+                    bolas.clear()
+                    bolas.append({
+                        "rect": pygame.Rect(400, 375, tamanho_da_bola, tamanho_da_bola),
+                        "vel": [5, -5]
+                    })
                     continue
                 elif nivel == 3:
                     tela_ganhou()
