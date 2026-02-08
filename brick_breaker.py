@@ -185,17 +185,17 @@ y_botao = 350
 botao_jogar_novamente = pygame.Rect(x_botao, y_botao, (400), (60))
 
 def resetar_jogo():
-    global vidas, pontuacao, nivel, velocidade_da_bola
-
+    global vidas, pontuacao, nivel, bolas
     vidas = 5
     pontuacao = 0
     nivel = 1
-    bola.centerx = 400
-    bola.centery = 375
-    velocidade_da_bola[0] = 5
-    velocidade_da_bola[1] = -5
+    bolas = [
+        {
+            "rect": pygame.Rect(400, 375, tamanho_da_bola, tamanho_da_bola),
+            "vel": [5, -5]
+        }
+    ]
     barra.centerx = 400
-
 poderes = []
 velocidade_poder = 4
 
