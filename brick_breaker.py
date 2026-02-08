@@ -175,7 +175,7 @@ def resetar_jogo():
 
     vidas = 5
     pontuacao = 0
-    nivel = 2
+    nivel = 1
     bola.centerx = 400
     bola.centery = 375
     velocidade_da_bola[0] = 5
