@@ -215,6 +215,9 @@ def atualizar_poderes():
         if poder["rect"].colliderect(barra):
             tipo = poder["tipo"]
             
+            if tipo == "dupla":
+                ativar_bola_dupla()
+
             if tipo == "forte":
                 bola_forte = True
                 tempo_bola_forte = pygame.time.get_ticks()
@@ -249,6 +252,20 @@ def atualizar_poderes():
         if pygame.time.get_ticks() - tempo_bola_forte > 10000:
             bola_forte = False    
 
+
+def ativar_bola_dupla():
+    if len(bolas) < 2:
+        bola_original = bolas[0]
+        nova = {
+            "rect": pygame.Rect(
+                bola_original["rect"].x,
+                bola_original["rect"].y,
+                tamanho_da_bola,
+                tamanho_da_bola
+            ),
+            "vel": [-bola_original["vel"][0], bola_original["vel"][1]]
+        }
+        bolas.append(nova)
 
 
 def tela_proximos_niveis():
