@@ -364,7 +364,6 @@ def tela_de_jogo():
 
                         if not bola_forte:
                             b["vel"][1] *= -1
-
                         bloco["vida"] -= 1
 
                         if bloco["vida"] <= 0:
@@ -416,8 +415,8 @@ def tela_de_jogo():
             movimentar_barra()
 
             pygame.draw.rect(tela, cores["roxo"], barra)
-            pygame.draw.rect(tela, cores["roxo"], bola)
-
+            for b in bolas:
+                pygame.draw.rect(tela, cores["roxo"], b["rect"])
             for bloco in blocos:
                 pygame.draw.rect(tela, cor_dos_blocos(nivel), bloco["rect"])
 
